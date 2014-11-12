@@ -1,0 +1,7 @@
+'use strict'
+
+var teamcheck = angular.module('teamcheck', ["xeditable"]);
+
+teamcheck.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
