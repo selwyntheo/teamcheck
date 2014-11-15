@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="teamcheck">
 
 <head>
 
@@ -22,6 +22,9 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- X-editable -->
+	<link href="css/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -289,7 +292,7 @@
                                     <a href="configure.html">Configure Checklist</a>
                                 </li>
                                 <li>
-                                    <a href="task.html">Add Tasks</a>
+                                    <a href="tasktree.html">Add Tasks</a>
                                 </li>
                                 <li>
                                     <a href="notifications.html">Add Resources</a>
@@ -333,13 +336,59 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
+	<div id="page-wrapper" ng-controller="checklistCtrl">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">My Checklist</h1>
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<div id="main">
+				<div>
+					<div class="table-responsive">
+						<table class="table table-striped table-condensed table-hover">
+							<thead>
+								<th>Name</th>
+								<th>Description</th>
+								<th>Team</th>
+								<th>Owner</th>
+								<th>Status</th>
+								<th>Action</th>
+								<th>Details</th>
+							</thead>
+							<tbody>
+							 
+								<tr ng-repeat="checklist in checklists | orderBy:'name' | filter:search">
+									<td>{{checklist.name}}</td>
+									<td>{{checklist.description}}</td>
+									<td>{{checklist.team}}</td>
+									<td>{{checklist.owner}}</td>
+									<td>{{checklist.status}}</td>
+									<td>
+										<a href="checklist.html"><i class="fa fa-edit fa-fw">
+									</td>
+									<td>
+										<button class="btn btn-primary" type="button">Details</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>	
+			</div>
+	</div>	
+	<!-- /#wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+	
+	<!-- Angular JS-->
+    <script src="js/angular.min.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -349,6 +398,15 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
+	
+	<!-- Xeditable JavaScript -->
+	<script src="js/angular-xeditable/dist/js/xeditable.js"></script>
+	
+	<!--Angular app -->
+	<script src="app.js"></script>
+	<script src="checklistCtrl.js"></script>
+
+
 
 </body>
 
